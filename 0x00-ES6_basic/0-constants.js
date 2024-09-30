@@ -1,3 +1,5 @@
+// instantiates a variable using let and const
+
 export function taskFirst() {
     const task = 'I prefer const when I can.';
     return task;
@@ -13,4 +15,3 @@ export function taskFirst() {
   
     return combination;
   }
-  
