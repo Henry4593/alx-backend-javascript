@@ -1,5 +1,6 @@
 export default function cleanSet(newSet, string) {
-  if (typeof string !== 'string' || !(newSet instanceof Set) || string.length === 0) {
+  if (typeof string !== 'string' || !(newSet instanceof Set)
+    || string.length === 0 || !newSet) {
     return '';
   }
   const stringLength = string.length;
