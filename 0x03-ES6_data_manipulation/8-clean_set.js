@@ -1,14 +1,18 @@
-export default function cleanSet(newSet, string) {
-  if (typeof string !== 'string' || !(newSet instanceof Set)
-    || string.length === 0 || !newSet) {
+export default function cleanSet(set, startString) {
+  // Validate input types and conditions
+  if (typeof startString !== 'string' || !(set instanceof Set)
+    || !startString || !set.size
+    || [...set].every((item) => typeof item !== 'string')) {
     return '';
   }
-  const stringLength = string.length;
-  let finalString = '';
-  newSet.forEach((setItem) => {
-    if (setItem.slice(0, stringLength) === string) {
-      finalString += `${setItem.slice(stringLength)}-`;
-    }
-  });
-  return finalString.slice(0, -1);
+
+  const startStringLength = startString.length;
+
+  // convert the Set to an array and filter items
+  const finalString = Array.from(set)
+    .filter((setItem) => setItem.startsWith(startString))
+    .map((setItem) => setItem.slice(startStringLength))
+    .join('-');
+
+  return finalString;
 }
